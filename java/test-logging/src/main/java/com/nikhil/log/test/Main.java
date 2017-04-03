@@ -25,6 +25,19 @@ public class Main {
 		System.out.println("Hello World");
 		log.info("Test logg");
 		String fileName = "asf";
+		
+		Pojo pojo = new Pojo();
+		pojo.setProperty1("Property 1");
+		pojo.setProperty2("Property 2");
+		pojo.setProperty3("Property 3");
+		pojo.setProperty4("Property 4");
+		
+		AnotherPojo anotherPojo = new AnotherPojo();
+		anotherPojo.setProperty5("Property 5");
+		anotherPojo.setProperty5("Property 6");
+		
+		pojo.setAnotherPojo(anotherPojo);
+		
 		try {
 			File f = new File(fileName);
 			f.exists();
@@ -36,11 +49,12 @@ public class Main {
 			stream.close();
 		}
 		catch (IOException e) {
-			log.error("IOException while reading file: {}. "
-					+ "Here are the exception details: ", fileName, e);
+			log.error("IOException while reading file: " + fileName
+					+ ". here are the pojo details: " + pojo
+					+ ". Here are the exception details:", e);
 			
 			log.error("IOException while reading file: {}. "
-					+ "Here are the exception details: ", fileName, e.getMessage());
+					+ "Here are the exception details: {}", fileName, e.getMessage());
 		}
 	}
 }
